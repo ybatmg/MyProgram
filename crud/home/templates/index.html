@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>My Tasks</h1>
+    <button><a href={% url 'createtask' %}>Create Task</a></button>
+    <table class="table-fixed">
+        <thead>
+            <tr class="bg-gray-200">
+            <th>Id</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Due Date:</th>
+            <th>Priority</th>
+            <th>Created Date:</th>
+            <th>Updated Date:</th>
+            <th>Owner:</th>
+            <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for field in form %}
+            <tr>
+            <td class="border px-4 py-2">{{field.id}}</td>
+            <td class="border px-4 py-2">{{field.title}}</td>
+            <td class="border px-4 py-2">{{field.description}}</td>
+            <td class="border px-4 py-2">{{field.due_date}}</td>
+            <td class="border px-4 py-2">{{field.priority}}</td>
+            <td class="border px-4 py-2">{{field.created_at}}</td>
+            <td class="border px-4 py-2">{{field.updated_at}}</td>
+            <td class="border px-4 py-2">{{field.owner}}</td>
+            <td><button><a href="{% url 'deletetask' field.id %}">Delete</a></button><button><a href="{% url 'updatetask' field.id %}">Update</button></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

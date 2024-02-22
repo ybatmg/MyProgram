@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>LOGIN</h2>
+<form method="POST">
+    {{form.username.errors}}
+    {{form.username.label_tag}}
+    {{form.username}}
+    {{form.password.label_tag}}
+    {{form.password}}
+    {% csrf_token %}
+    <button type="submit">Login</button>
+    <p>Don't have account?<a href="{% url 'signup' %}">Signup</a></p>
+</form>
+{% endblock content %}
